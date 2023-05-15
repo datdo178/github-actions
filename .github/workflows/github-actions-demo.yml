@@ -11,7 +11,7 @@ jobs:
         with:
           path: ./.github/workflows
       - name: Deploy with specific archive
-        if: ${{env.force_recreate_service_set == 'true'}}
+        if: ${{env.force_recreate_service_set == 'true' && env.FOLDER && env.ARCHIVE}}
         run: echo "deploy"
       - name: Deploy with latest archive
         if: ${{env.force_recreate_service_set == 'true' && !(env.FOLDER && env.ARCHIVE)}}
