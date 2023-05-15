@@ -3,8 +3,6 @@ run-name: ${{ github.actor }} 🚀 - Regression
 on: [push]
 jobs:
   Explore-GitHub-Actions:
-    if: |
-      github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
