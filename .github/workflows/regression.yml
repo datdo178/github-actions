@@ -3,8 +3,45 @@ run-name: ${{ github.actor }} 🚀 - Regression
 
 on:
   schedule:
-    - cron: '0 */8 * * *'
+    - cron: '0 10 * * 1-5'
+    - cron: '0 12 * * 1-5'
   workflow_dispatch:
+    inputs:
+      SERVICE_SET:
+        required: true
+        type: string
+      TESTING_HOST:
+        required: true
+        type: string
+      GAROON_BRANCH_NAME:
+        required: true
+        type: string
+      ARCHIVE_FOLDER:
+        required: false
+        description: 'Only fill if you want to use a specific archive'
+        type: string
+      GAROON_ARCHIVE:
+        required: false
+        description: 'Only fill if you want to use a specific archive'
+        type: string
+      GAROON_TYPE:
+        required: true
+        type: choice
+        options:
+          - 'Cloud'
+          - 'Large Scale Linux'
+          - 'Normal Linux'
+          - 'Normal Windows'
+      IS_SET_UP_MAIL_ACCOUNT:
+        required: true
+        type: boolean
+      IS_CREATE_MAIL_FOLDER:
+        required: true
+        type: boolean
+      force_recreate_service_set:
+        required: true
+        type: boolean
+
   pull_request:
     types: [ labeled ]
 
