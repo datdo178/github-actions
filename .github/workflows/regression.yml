@@ -18,11 +18,11 @@ on:
         type: string
       ARCHIVE_FOLDER:
         required: false
-        description: 'Only fill if you want to use a specific archive'
+        description: 'ARCHIVE_FOLDER - Only fill if you want to use a specific archive'
         type: string
       GAROON_ARCHIVE:
         required: false
-        description: 'Only fill if you want to use a specific archive'
+        description: 'GAROON_ARCHIVE - Only fill if you want to use a specific archive'
         type: string
       GAROON_TYPE:
         required: true
@@ -34,12 +34,15 @@ on:
           - 'Normal Windows'
       IS_SET_UP_MAIL_ACCOUNT:
         required: true
+        default: true
         type: boolean
       IS_CREATE_MAIL_FOLDER:
         required: true
+        default: true
         type: boolean
       force_recreate_service_set:
         required: true
+        default: true
         type: boolean
 
   pull_request:
