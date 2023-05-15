@@ -64,12 +64,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Get Environment Variables
-        script: |
-          const envInfo = require("./.github/workflows/schedule.json");
-          const commonInfo = envInfo.common;
-          
-          core.exportVariable('ADMIN_USERNAME', commonInfo.ADMIN_USERNAME);
-          core.exportVariable('PASSWORD', commonInfo.PASSWORD);
+        uses: actions/github-script@v6
+        id: set_output_info
+        with:
+          script: |
+            const envInfo = require("./.github/workflows/schedule.json");
+            const commonInfo = envInfo.common;
+            
+            core.exportVariable('ADMIN_USERNAME', commonInfo.ADMIN_USERNAME);
+            core.exportVariable('PASSWORD', commonInfo.PASSWORD);
       - name: Update Environment Variables From Manual Trigger
         if: github.event_name == 'workflow_dispatch'
         scripts: |
