@@ -70,15 +70,15 @@ jobs:
             const envInfo = require("./.github/workflows/schedule.json");
             const commonInfo = envInfo.common;
             
-            core.exportVariable('ADMIN_USERNAME', commonInfo.ADMIN_USERNAME);
-            core.exportVariable('PASSWORD', commonInfo.PASSWORD);
+            core.exportVariable("ADMIN_USERNAME", commonInfo.ADMIN_USERNAME);
+            core.exportVariable("PASSWORD", commonInfo.PASSWORD);
       - name: Update Environment Variables From Manual Trigger
         if: github.event_name == 'workflow_dispatch'
         uses: actions/github-script@v6
         with:
           script: |
-            core.exportVariable('ADMIN_USERNAME', ${{ github.event.inputs.ADMIN_USERNAME }});
-            core.exportVariable('ADMIN_USERNAME', ${{ github.event.inputs.PASSWORD }});
+            core.exportVariable('ADMIN_USERNAME', "${{ github.event.inputs.ADMIN_USERNAME }}");
+            core.exportVariable('ADMIN_USERNAME', "${{ github.event.inputs.PASSWORD }}");
       - name: Sprint Env
         run: |
           echo "${{ env.ADMIN_USERNAME }}"
