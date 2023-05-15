@@ -1,8 +1,10 @@
 name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: ${{ github.actor }} 🚀 - Regression
 on: [push]
 jobs:
   Explore-GitHub-Actions:
+    if: |
+      github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -12,10 +14,10 @@ jobs:
           path: ./.github/workflows
       - name: Deploy with specific archive
         if: ${{env.force_recreate_service_set == 'true' && env.FOLDER && env.ARCHIVE}}
-        run: echo "deploy"
+        run: echo "deploy - regression"
       - name: Deploy with latest archive
         if: ${{env.force_recreate_service_set == 'true' && !(env.FOLDER && env.ARCHIVE)}}
-        run: echo "deploy"
+        run: echo "deploy - regression"
 #      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
 #      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
 #      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
