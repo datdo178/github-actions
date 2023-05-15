@@ -9,20 +9,24 @@ on:
     inputs:
       SERVICE_SET:
         required: true
+        default: 'E.x: abc'
         type: string
       TESTING_HOST:
         required: true
+        default: 'E.x: https://abc.com'
         type: string
       GAROON_BRANCH_NAME:
         required: true
         type: string
       ARCHIVE_FOLDER:
         required: false
-        description: 'ARCHIVE_FOLDER - Only fill if you want to use a specific archive'
+        default: 'E.x: 1234'
+        description: 'ARCHIVE_FOLDER (Input if you want to use a specific archive)'
         type: string
       GAROON_ARCHIVE:
         required: false
-        description: 'GAROON_ARCHIVE - Only fill if you want to use a specific archive'
+        default: 'E.x: 12344'
+        description: 'GAROON_ARCHIVE (Input if you want to use a specific archive)'
         type: string
       GAROON_TYPE:
         required: true
