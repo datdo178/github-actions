@@ -13,7 +13,7 @@ jobs:
         if: ${{env.force_recreate_service_set}}
         run: echo "deploy"
       - name: Deploy with latest archive
-        if: ${{env.force_recreate_service_set && IS_CREATE_MAIL_FOLDER}}
+        if: ${{env.force_recreate_service_set && env.IS_CREATE_MAIL_FOLDER}}
         run: echo "deploy"
 #      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
 #      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
