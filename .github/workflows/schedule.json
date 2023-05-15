@@ -1,0 +1,14 @@
+{
+  "0 10 * * 1-5": {
+    "service_set": "mailsource-ga",
+    "testing_host": "https://mailsource-ga-1.cybozu-dev.com/g/"
+  },
+  "0 12 * * 1-5": {
+    "service_set": "mailsource-ga",
+    "testing_host": "https://mailsource-ga-1.cybozu-dev.com/g/"
+  },
+  "common": {
+    "ADMIN_USERNAME": "admin",
+    "PASSWORD": "password"
+  }
+}

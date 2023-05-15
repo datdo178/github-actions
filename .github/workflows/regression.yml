@@ -2,55 +2,61 @@ name: Regression
 run-name: ${{ github.actor }} 🚀 - Regression
 
 on:
+  push:
   schedule:
     - cron: '0 10 * * 1-5'
     - cron: '0 12 * * 1-5'
   workflow_dispatch:
     inputs:
-      SERVICE_SET:
+      ADMIN_USERNAME:
         required: true
-        default: 'E.x: abc'
+        default: user2
         type: string
-      TESTING_HOST:
+      PASSWORD:
         required: true
-        default: 'E.x: https://abc.com'
+        default: abc2
         type: string
-      GAROON_BRANCH_NAME:
-        required: true
-        type: string
-      ARCHIVE_FOLDER:
-        required: false
-        default: 'E.x: 1234'
-        description: 'ARCHIVE_FOLDER (Input if you want to use a specific archive)'
-        type: string
-      GAROON_ARCHIVE:
-        required: false
-        default: 'E.x: 12344'
-        description: 'GAROON_ARCHIVE (Input if you want to use a specific archive)'
-        type: string
-      GAROON_TYPE:
-        required: true
-        type: choice
-        options:
-          - 'Cloud'
-          - 'Large Scale Linux'
-          - 'Normal Linux'
-          - 'Normal Windows'
-      IS_SET_UP_MAIL_ACCOUNT:
-        required: true
-        default: true
-        type: boolean
-      IS_CREATE_MAIL_FOLDER:
-        required: true
-        default: true
-        type: boolean
-      force_recreate_service_set:
-        required: true
-        default: true
-        type: boolean
-
-  pull_request:
-    types: [ labeled ]
+#      SERVICE_SET:
+#        required: true
+#        default: 'E.x: abc'
+#        type: string
+#      TESTING_HOST:
+#        required: true
+#        default: 'E.x: https://abc.com'
+#        type: string
+#      GAROON_BRANCH_NAME:
+#        required: true
+#        type: string
+#      ARCHIVE_FOLDER:
+#        required: false
+#        default: 'E.x: 1234'
+#        description: 'ARCHIVE_FOLDER (Input if you want to use a specific archive)'
+#        type: string
+#      GAROON_ARCHIVE:
+#        required: false
+#        default: 'E.x: 12344'
+#        description: 'GAROON_ARCHIVE (Input if you want to use a specific archive)'
+#        type: string
+#      GAROON_TYPE:
+#        required: true
+#        type: choice
+#        options:
+#          - 'Cloud'
+#          - 'Large Scale Linux'
+#          - 'Normal Linux'
+#          - 'Normal Windows'
+#      IS_SET_UP_MAIL_ACCOUNT:
+#        required: true
+#        default: true
+#        type: boolean
+#      IS_CREATE_MAIL_FOLDER:
+#        required: true
+#        default: true
+#        type: boolean
+#      force_recreate_service_set:
+#        required: true
+#        default: true
+#        type: boolean
 
 jobs:
   Explore-GitHub-Actions:
@@ -58,23 +64,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Get Environment Variables
-        uses: xom9ikk/dotenv@v2
-        with:
-          path: ./.github/workflows
-      - name: Deploy with specific archive
-        if: ${{env.force_recreate_service_set == 'true' && env.FOLDER && env.ARCHIVE}}
-        run: echo "deploy - regression"
-      - name: Deploy with latest archive
-        if: ${{env.force_recreate_service_set == 'true' && !(env.FOLDER && env.ARCHIVE)}}
-        run: echo "deploy - regression"
-#      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-#      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-#      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-#      - name: Check out repository code
-#        uses: actions/checkout@v3
-#      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-#      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-#      - name: List files in the repository
-#        run: |
-#          ls ${{ github.workspace }}
-#      - run: echo "🍏 This job's status is ${{ job.status }}."
+        scripts: |
+          const envInfo = require("./.github/workflows/schedule.json");
+          const commonInfo = envInfo.common;
+          
+          core.exportVariable('ADMIN_USERNAME', commonInfo.ADMIN_USERNAME);
+          core.exportVariable('PASSWORD', commonInfo.PASSWORD);
+      - name: Update Environment Variables From Manual Trigger
+        if: github.event_name == 'workflow_dispatch'
+        scripts:
+          core.exportVariable('ADMIN_USERNAME', ${{ github.event.inputs.ADMIN_USERNAME }});
+          core.exportVariable('ADMIN_USERNAME', ${{ github.event.inputs.PASSWORD }});
+      - name: Sprint Env
+        run: |
+          echo "${{ env.ADMIN_USERNAME }}"
+          echo "${{ env.PASSWORD }}"
