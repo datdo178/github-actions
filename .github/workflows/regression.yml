@@ -64,7 +64,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Get Environment Variables
-        scripts: |
+        script: |
           const envInfo = require("./.github/workflows/schedule.json");
           const commonInfo = envInfo.common;
           
