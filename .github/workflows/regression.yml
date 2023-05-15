@@ -74,9 +74,11 @@ jobs:
             core.exportVariable('PASSWORD', commonInfo.PASSWORD);
       - name: Update Environment Variables From Manual Trigger
         if: github.event_name == 'workflow_dispatch'
-        scripts: |
-          core.exportVariable('ADMIN_USERNAME', ${{ github.event.inputs.ADMIN_USERNAME }});
-          core.exportVariable('ADMIN_USERNAME', ${{ github.event.inputs.PASSWORD }});
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.exportVariable('ADMIN_USERNAME', ${{ github.event.inputs.ADMIN_USERNAME }});
+            core.exportVariable('ADMIN_USERNAME', ${{ github.event.inputs.PASSWORD }});
       - name: Sprint Env
         run: |
           echo "${{ env.ADMIN_USERNAME }}"
