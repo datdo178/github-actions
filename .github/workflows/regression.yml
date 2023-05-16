@@ -59,6 +59,8 @@ jobs:
               "0 10 * * 1-5": "F23.5",
               "0 12 * * 1-5": "F23.6"
             }
+            console.log(branchNames["${{ github.event.schedule }}"]);
+            console.log(envInfo[F23.5]);
             const branchInfo = envInfo[branchNames["${{ github.event.schedule }}"]]
             console.log(commonInfo);
             console.log(branchInfo);
