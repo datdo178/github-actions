@@ -57,8 +57,12 @@ jobs:
               "45 9 * * 1-5": "F23.5",
               "50 9 * * 1-5": "F23.6"
             }
-            if (("${{ github.event_name }}" == "workflow_dispatch") && ("${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}" == "None")) {
-              console.log("If not select a configured branch, you must input values for other variables");
+            if (
+              ("${{ github.event_name }}" == "workflow_dispatch")
+              && ("${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}" == "None")
+              && ("${{ github.event.inputs.GAROON_BRANCH_NAME}}" == "")
+            ) {
+              console.log("If 'CONFIGURED_TESTING_BRANCH' is 'None', you must input values for other variables");
               process.exit(1);
             }
             const branchName = "${{ github.event_name }}" == "workflow_dispatch"
