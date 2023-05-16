@@ -83,7 +83,7 @@ jobs:
             core.exportVariable("EMAIL_ACCOUNT_PASSWORD", commonInfo.emailAccount.password);
             
             core.exportVariable("APP_ID", commonInfo.mailSourceLibKintoneApp.id);
-            core.exportVariable("API_TOKEN", ${{ secrets.KINTONE_API_TOKEN }});
+            core.exportVariable("API_TOKEN", "${{ secrets.KINTONE_API_TOKEN }}");
             core.exportVariable("IGNORE_MAILSOURCE_IDS", commonInfo.mailSourceLibKintoneApp.ignoreMailsourceIds);
             
             core.exportVariable("IS_SET_UP_MAIL_ACCOUNT", commonInfo.setupOptions.isSetupMailAccount);
