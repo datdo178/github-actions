@@ -16,13 +16,22 @@ on:
           - 'None'
           - 'F23.5'
           - 'F23.6'
-      ADMIN_USERNAME:
-        type: string
-      PASSWORD:
-        type: string
+      IS_SET_UP_MAIL_ACCOUNT:
+        default: true
+        type: boolean
+      IS_CREATE_MAIL_FOLDER:
+        default: true
+        type: boolean
+      force_recreate_service_set:
+        default: true
+        type: boolean
       SERVICE_SET:
         type: string
       TESTING_HOST:
+        type: string
+      TESTING_HOST_ADMIN_USERNAME:
+        type: string
+      TESTING_HOST_PASSWORD:
         type: string
       GAROON_BRANCH_NAME:
         type: string
@@ -40,15 +49,6 @@ on:
           - 'Large Scale Linux'
           - 'Normal Linux'
           - 'Normal Windows'
-      IS_SET_UP_MAIL_ACCOUNT:
-        default: true
-        type: boolean
-      IS_CREATE_MAIL_FOLDER:
-        default: true
-        type: boolean
-      force_recreate_service_set:
-        default: true
-        type: boolean
 
 jobs:
   Explore-GitHub-Actions:
