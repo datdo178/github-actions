@@ -53,32 +53,27 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const scheduledBranchNames = {
+            const envInfo = require("./.github/workflows/environment_vars.json");
+            const scheduledBranches = {
               "45 9 * * 1-5": "F23.5",
               "50 9 * * 1-5": "F23.6"
-            }
-            if (
-              ("${{ github.event_name }}" == "workflow_dispatch")
-              && ("${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}" == "None")
-              && ("${{ github.event.inputs.GAROON_BRANCH_NAME}}" == "")
-            ) {
-              console.log("If 'CONFIGURED_TESTING_BRANCH' is 'None', you must input values for other variables");
-              process.exit(1);
             }
             const branchName = "${{ github.event_name }}" == "workflow_dispatch"
               ? "${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}"
               : scheduledBranchNames["${{ github.event.schedule }}"];
             
-            const envInfo = require("./.github/workflows/environment_vars.json");
+            if (branchName != "None") {
+              const siteTestInfo = envInfo[branchName];
+  
+              core.exportVariable("SERVICE_SET", siteTestInfo.serviceSet);
+              core.exportVariable("TESTING_HOST", siteTestInfo.testingHost);
+              core.exportVariable("GAROON_VERSION", siteTestInfo.garoonVersion);
+              core.exportVariable("GAROON_TYPE", siteTestInfo.garoonType);
+              core.exportVariable("ADMIN_USER_NAME", siteTestInfo.adminUsername);
+              core.exportVariable("PASSWORD", siteTestInfo.password);
+            }
+            
             const commonInfo = envInfo.commonInfo;
-            const siteTestInfo = envInfo[branchName];
-
-            core.exportVariable("SERVICE_SET", siteTestInfo.serviceSet);
-            core.exportVariable("TESTING_HOST", siteTestInfo.testingHost);
-            core.exportVariable("GAROON_VERSION", siteTestInfo.garoonVersion);
-            core.exportVariable("GAROON_TYPE", siteTestInfo.garoonType);
-            core.exportVariable("ADMIN_USER_NAME", siteTestInfo.adminUsername);
-            core.exportVariable("PASSWORD", siteTestInfo.password);
             
             core.exportVariable("MAIL_SERVER_NAME", commonInfo.mailServer.name);
             core.exportVariable("OUTGOING_MAIL_SERVER", commonInfo.mailServer.outgoingMailServer);
