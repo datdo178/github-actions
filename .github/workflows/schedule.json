@@ -1,7 +1,7 @@
 {
   "F23.5": {
-    "service_set": "mailsource-ga",
-    "testing_host": "https://mailsource-ga-1.cybozu-dev.com/g/",
+    "serviceSet": "mailsource-ga",
+    "testingHost": "https://mailsource-ga-1.cybozu-dev.com/g/",
     "garoonVersion": "From_4.5.0",
     "garoonType": "Cloud",
     "adminUsername": "cybozu",
@@ -45,10 +45,10 @@
     "forDownloadArchiveInfo": {
       "folderInDevmgr": "/home/qa/garoon-mailsource-test",
       "folderInAws": "https://cybozu-garoon-ci.s3-ap-northeast-1.amazonaws.com/archives",
-      "interMediateVm": {
+      "downloadVm": {
         "ip": "10.224.152.211",
-        "interMediateVmUsername": "root",
-        "interMediateVmPassword": "cybozu"
+        "username": "root",
+        "password": "cybozu"
       }
     }
   }
