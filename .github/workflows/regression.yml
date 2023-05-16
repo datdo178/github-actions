@@ -54,7 +54,14 @@ jobs:
         with:
           script: |
             const envInfo = require("./.github/workflows/environment_vars.json");
-            const commonInfo = envInfo.commonInfo;
+            const commonInfo = envInfo.commonInfo;            
+            const scheduledBranches = {
+              "0 11 * * 1-5": "F23.5",
+              "10 11 * * 1-5": "F23.6"
+            }
+            const branchName = "${{ github.event_name }}" == "workflow_dispatch"
+              ? "${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}"
+              : scheduledBranchNames["${{ github.event.schedule }}"];
             
             core.exportVariable("MAIL_SERVER_NAME", commonInfo.mailServer.name);
             core.exportVariable("OUTGOING_MAIL_SERVER", commonInfo.mailServer.outgoingMailServer);
@@ -84,14 +91,6 @@ jobs:
             core.exportVariable("DOWNLOAD_VM_IP", commonInfo.forDownloadArchiveInfo.downloadVm.ip);
             core.exportVariable("DOWNLOAD_VM_USERNAME", commonInfo.forDownloadArchiveInfo.downloadVm.username);
             core.exportVariable("DOWNLOAD_VM_PASSWORD", commonInfo.forDownloadArchiveInfo.downloadVm.password);
-            
-            const scheduledBranches = {
-              "0 11 * * 1-5": "F23.5",
-              "10 11 * * 1-5": "F23.6"
-            }
-            const branchName = "${{ github.event_name }}" == "workflow_dispatch"
-              ? "${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}"
-              : scheduledBranchNames["${{ github.event.schedule }}"];
 
             if (branchName != "None") {
               const siteTestInfo = envInfo["branchName"];
