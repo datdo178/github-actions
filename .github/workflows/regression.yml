@@ -9,9 +9,9 @@ on:
   workflow_dispatch:
     inputs:
       SPECIFIC_TESTING_BRANCH:
-        required: false,
-        default: "None",
-        type: "choice",
+        required: false
+        default: "None"
+        type: "choice"
         options:
           - "F23.5"
           - "F23.6"
