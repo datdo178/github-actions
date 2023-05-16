@@ -62,8 +62,9 @@ jobs:
               ? "${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}"
               : scheduledBranchNames["${{ github.event.schedule }}"];
             
+            let siteTestInfo;
             if (branchName != "None") {
-              const siteTestInfo = envInfo[branchName];
+              siteTestInfo = envInfo["branchName"];
   
               core.exportVariable("SERVICE_SET", siteTestInfo.serviceSet);
               core.exportVariable("TESTING_HOST", siteTestInfo.testingHost);
