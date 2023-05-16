@@ -2,7 +2,6 @@ name: Regression
 run-name: ${{ github.actor }} 🚀 - Regression
 
 on:
-  push:
   schedule:
     - cron: '0 10 * * 1-5'
     - cron: '0 12 * * 1-5'
@@ -17,7 +16,7 @@ on:
           - "F23.5"
           - "F23.6"
       ADMIN_USERNAME:
-        if: "a" == "b"
+        if: ${{ "a" == "b" }}
         required: false
         default: user2
         type: string
