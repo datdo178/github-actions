@@ -57,7 +57,7 @@ jobs:
               "20 9 * * 1-5": "F23.5",
               "25 9 * * 1-5": "F23.6"
             }
-            const branchName = ("${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}" !== "None") && "${{ github.event_name }}" == "workflow_dispatch"
+            const branchName = ("${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}" != "None") && ("${{ github.event_name }}" == "workflow_dispatch")
               ? "${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}"
               : scheduledBranchNames["${{ github.event.schedule }}"];
             
