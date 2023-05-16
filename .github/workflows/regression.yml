@@ -109,7 +109,7 @@ jobs:
             core.exportVariable("GAROON_ARCHIVE", "${{ github.event.inputs.GAROON_ARCHIVE }}");
             core.exportVariable("GAROON_TYPE", "${{ github.event.inputs.GAROON_TYPE }}" || "${{ env.GAROON_TYPE }}");
             
-            node ./reflect_config.sh
+            node reflect_config.sh
       - name: Sprint Env
         run: |
           echo "${{ env }}"

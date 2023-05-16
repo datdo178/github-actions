@@ -3,8 +3,6 @@ DESTFILE=./config/testing.properties
 
 cp $MASTERFILE $DESTFILE
 
-echo "$MASTERFILE $DESTFILE"
-
 sed -i -e "s|\$TESTING_HOST|${1}|g" $DESTFILE
 sed -i -e "s|\$GAROON_VERSION|${2}|g" $DESTFILE
 sed -i -e "s|\$ADMIN_USER_NAME|${3}|g" $DESTFILE
