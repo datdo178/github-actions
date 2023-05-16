@@ -92,21 +92,24 @@ jobs:
             core.exportVariable("force_recreate_service_set", commonInfo.setupOptions.forceRecreateServiceSet);
             
             core.exportVariable("GAROON_BRANCH_NAME", branchNames["0 10 * * 1-5"]);
-            core.exportVariable("ARCHIVE_FOLDER", commonInfo.forDownloadArchiveInfo);
-            core.exportVariable("GAROON_ARCHIVE", commonInfo.forDownloadArchiveInfo);
-            core.exportVariable("ARCHIVE_FOLDER_BUILD", commonInfo.forDownloadArchiveInfo);
-            core.exportVariable("AWS_ARCHIVE_FOLDER", commonInfo.forDownloadArchiveInfo);
             core.exportVariable("DOWNLOAD_VM_IP", commonInfo.forDownloadArchiveInfo.downloadVm.ip);
             core.exportVariable("DOWNLOAD_VM_USERNAME", commonInfo.forDownloadArchiveInfo.downloadVm.username);
             core.exportVariable("DOWNLOAD_VM_PASSWORD", commonInfo.forDownloadArchiveInfo.downloadVm.password);
+      - name: Update Environment Variables From Manual Trigger
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.exportVariable('force_recreate_service_set', "${{ github.event.inputs.force_recreate_service_set }}");
+            core.exportVariable('SERVICE_SET', "${{ github.event.inputs.SERVICE_SET }}" || ${{ env.SERVICE_SET }});
+            core.exportVariable('TESTING_HOST', "${{ github.event.inputs.TESTING_HOST }}" || ${{ env.TESTING_HOST }});
+            core.exportVariable('ADMIN_USERNAME', "${{ github.event.inputs.TESTING_HOST_ADMIN_USERNAME }}" || ${{ env.ADMIN_USERNAME }});
+            core.exportVariable('PASSWORD', "${{ github.event.inputs.TESTING_HOST_PASSWORD }}" || ${{ env.PASSWORD }});
+            core.exportVariable('GAROON_BRANCH_NAME', "${{ github.event.inputs.GAROON_BRANCH_NAME }}" || ${{ env.GAROON_BRANCH_NAME }});
+            core.exportVariable('ARCHIVE_FOLDER', "${{ github.event.inputs.ARCHIVE_FOLDER }}");
+            core.exportVariable('GAROON_ARCHIVE', "${{ github.event.inputs.GAROON_ARCHIVE }}");
+            core.exportVariable('GAROON_TYPE', "${{ github.event.inputs.GAROON_TYPE }}" || ${{ env.GAROON_TYPE }});
       - name: Sprint Env
         run: |
           echo "${{ env }}"
-#      - name: Update Environment Variables From Manual Trigger
-#        if: github.event_name == 'workflow_dispatch'
-#        uses: actions/github-script@v6
-#        with:
-#          script: |
-#            core.exportVariable('ADMIN_USERNAME', "${{ github.event.inputs.ADMIN_USERNAME }}");
-#            core.exportVariable('PASSWORD', "${{ github.event.inputs.PASSWORD }}");
 
