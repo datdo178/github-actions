@@ -16,7 +16,6 @@ on:
           - 'None'
           - 'F23.5'
           - 'F23.6'
-      description: 'SPECIFIC_TESTING_BRANCH \\n If you select an options for this variable, you can ignore inputting value for variables below (the default values for the selected options will be applied)'
       IS_SET_UP_MAIL_ACCOUNT:
         default: true
         type: boolean
