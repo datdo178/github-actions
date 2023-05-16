@@ -7,9 +7,9 @@ on:
     - cron: '0 12 * * 1-5'
   workflow_dispatch:
     inputs:
-      TESTING_BRANCH:
+      CONFIGURED_TESTING_BRANCH:
         required: false
-        description: 'SPECIFIC_TESTING_BRANCH - If select a specific branch, you can ignore inputting value for variables below (the default values for the selected options will be applied)'
+        description: 'CONFIGURED_TESTING_BRANCH - If select a specific branch, you can ignore inputting value for variables below (the default values for the selected options will be applied)'
         default: 'None'
         type: 'choice'
         options:
@@ -59,7 +59,9 @@ jobs:
               "0 10 * * 1-5": "F23.5",
               "0 12 * * 1-5": "F23.6"
             }
-            const siteTestInfo = envInfo[branchNames["0 10 * * 1-5"]]
+            const siteTestInfo = "${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}" !== "None"
+              ?  envInfo["${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}"]
+              : envInfo[branchNames["0 10 * * 1-5"]];
 
             core.exportVariable("SERVICE_SET", siteTestInfo.serviceSet);
             core.exportVariable("TESTING_HOST", siteTestInfo.testingHost);
