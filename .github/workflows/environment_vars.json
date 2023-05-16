@@ -30,7 +30,7 @@
     "emailAccount": {
       "address": "garoon17@hokkyoku.com",
       "account": "kir229261.garoon17",
-      "passwoAPIrd": "garoon17"
+      "password": "garoon17"
     },
     "mailSourceLibKintoneApp": {
       "id": "6113",
