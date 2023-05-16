@@ -1,6 +1,7 @@
 ARG_QUANTITY=$#
-if [ ARG_QUANTITY != 20 ]; then
-  echo "Not enough arguments!"
+if [ ARG_QUANTITY != 20 ]
+then
+  echo "Not enough arguments!. Expect: 20. Actual $ARG_QUANTITY"
   exit 1
 fi
 
