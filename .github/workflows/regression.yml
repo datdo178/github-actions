@@ -3,8 +3,8 @@ run-name: ${{ github.actor }} 🚀 - Regression
 
 on:
   schedule:
-    - cron: '0 10 * * 1-5'
-    - cron: '0 12 * * 1-5'
+    - cron: '35 8 * * 1-5'
+    - cron: '40 8 * * 1-5'
   workflow_dispatch:
     inputs:
       CONFIGURED_TESTING_BRANCH:
@@ -53,15 +53,17 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            const scheduledBranchNames = {
+              "35 8 * * 1-5": "F23.5",
+              "40 8 * * 1-5": "F23.6"
+            }
+            const branchName = "${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}" !== "None"
+              ? "${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}"
+              : scheduledBranchNames["${{ github.event.schedule }}"];
+            
             const envInfo = require("./.github/workflows/environment_vars.json");
             const commonInfo = envInfo.commonInfo;
-            const branchNames = {
-              "0 10 * * 1-5": "F23.5",
-              "0 12 * * 1-5": "F23.6"
-            }
-            const siteTestInfo = "${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}" !== "None"
-              ?  envInfo["${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}"]
-              : envInfo[branchNames["0 10 * * 1-5"]];
+            const siteTestInfo = envInfo[branchName];
 
             core.exportVariable("SERVICE_SET", siteTestInfo.serviceSet);
             core.exportVariable("TESTING_HOST", siteTestInfo.testingHost);
@@ -94,7 +96,7 @@ jobs:
             core.exportVariable("IS_CREATE_MAIL_FOLDER", commonInfo.setupOptions.isCreateMailFolder);
             core.exportVariable("force_recreate_service_set", commonInfo.setupOptions.forceRecreateServiceSet);
             
-            core.exportVariable("GAROON_BRANCH_NAME", branchNames["0 10 * * 1-5"]);
+            core.exportVariable("GAROON_BRANCH_NAME", branchName);
             core.exportVariable("DOWNLOAD_VM_IP", commonInfo.forDownloadArchiveInfo.downloadVm.ip);
             core.exportVariable("DOWNLOAD_VM_USERNAME", commonInfo.forDownloadArchiveInfo.downloadVm.username);
             core.exportVariable("DOWNLOAD_VM_PASSWORD", commonInfo.forDownloadArchiveInfo.downloadVm.password);
