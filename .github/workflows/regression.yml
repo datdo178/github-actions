@@ -16,12 +16,6 @@ on:
           - 'None'
           - 'F23.5'
           - 'F23.6'
-      IS_SET_UP_MAIL_ACCOUNT:
-        default: true
-        type: boolean
-      IS_CREATE_MAIL_FOLDER:
-        default: true
-        type: boolean
       force_recreate_service_set:
         default: true
         type: boolean
