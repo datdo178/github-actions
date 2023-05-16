@@ -59,9 +59,9 @@ jobs:
               "0 10 * * 1-5": "F23.5",
               "0 12 * * 1-5": "F23.6"
             }
-            const branchInfo = envInfo["${{ github.event.schedule }}"]
+            const branchInfo = envInfo[branchNames["${{ github.event.schedule }}"]]
             console.log(commonInfo);
-            console.log(branchInfo)
+            console.log(branchInfo);
 
 #            core.exportVariable("ADMIN_USERNAME", commonInfo.ADMIN_USERNAME);
 #            core.exportVariable("PASSWORD", commonInfo.PASSWORD);
