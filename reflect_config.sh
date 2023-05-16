@@ -1,5 +1,5 @@
 ARG_QUANTITY=$#
-if [ ARG_QUANTITY != 20 ]
+if [ ARG_QUANTITY != 20 ]; then
   print "Not enough arguments"
   exit 1
 fi
