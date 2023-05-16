@@ -54,33 +54,13 @@ jobs:
         with:
           script: |
             const envInfo = require("./.github/workflows/environment_vars.json");
-            const scheduledBranches = {
-              "35 10 * * 1-5": "F23.5",
-              "40 10 * * 1-5": "F23.6"
-            }
-            const branchName = "${{ github.event_name }}" == "workflow_dispatch"
-              ? "${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}"
-              : scheduledBranchNames["${{ github.event.schedule }}"];
-            
-            let siteTestInfo;
-            if (branchName != "None") {
-              siteTestInfo = envInfo["branchName"];
-  
-              core.exportVariable("SERVICE_SET", siteTestInfo.serviceSet);
-              core.exportVariable("TESTING_HOST", siteTestInfo.testingHost);
-              core.exportVariable("GAROON_VERSION", siteTestInfo.garoonVersion);
-              core.exportVariable("GAROON_TYPE", siteTestInfo.garoonType);
-              core.exportVariable("ADMIN_USER_NAME", siteTestInfo.adminUsername);
-              core.exportVariable("PASSWORD", siteTestInfo.password);
-            }
-            
             const commonInfo = envInfo.commonInfo;
             
             core.exportVariable("MAIL_SERVER_NAME", commonInfo.mailServer.name);
             core.exportVariable("OUTGOING_MAIL_SERVER", commonInfo.mailServer.outgoingMailServer);
+            core.exportVariable("OUTGOING_PORT_NUMBER", commonInfo.mailServer.outgoingPortNumber.cloud);
             core.exportVariable("OUTGOING_PORT_NUMBER_CLOUD", commonInfo.mailServer.outgoingPortNumber.cloud);
             core.exportVariable("OUTGOING_PORT_NUMBER_ONPRE", commonInfo.mailServer.outgoingPortNumber.onpre);
-            core.exportVariable("OUTGOING_PORT_NUMBER",  siteTestInfo.garoonType == "Cloud" ? commonInfo.mailServer.outgoingPortNumber.cloud : commonInfo.mailServer.outgoingPortNumber.onpre);
             core.exportVariable("ENCRYPTION_TYPE", commonInfo.mailServer.encryptionType);
             core.exportVariable("SMTP_AUTHENTICATION_TYPE", commonInfo.mailServer.smtpAuthenticationType);
             core.exportVariable("INCOMING_MAIL_SERVER", commonInfo.mailServer.incomingMailServer);
@@ -104,6 +84,25 @@ jobs:
             core.exportVariable("DOWNLOAD_VM_IP", commonInfo.forDownloadArchiveInfo.downloadVm.ip);
             core.exportVariable("DOWNLOAD_VM_USERNAME", commonInfo.forDownloadArchiveInfo.downloadVm.username);
             core.exportVariable("DOWNLOAD_VM_PASSWORD", commonInfo.forDownloadArchiveInfo.downloadVm.password);
+            
+            const scheduledBranches = {
+              "35 10 * * 1-5": "F23.5",
+              "40 10 * * 1-5": "F23.6"
+            }
+            const branchName = "${{ github.event_name }}" == "workflow_dispatch"
+              ? "${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}"
+              : scheduledBranchNames["${{ github.event.schedule }}"];
+
+            if (branchName != "None") {
+              const siteTestInfo = envInfo["branchName"];
+  
+              core.exportVariable("SERVICE_SET", siteTestInfo.serviceSet);
+              core.exportVariable("TESTING_HOST", siteTestInfo.testingHost);
+              core.exportVariable("GAROON_VERSION", siteTestInfo.garoonVersion);
+              core.exportVariable("GAROON_TYPE", siteTestInfo.garoonType);
+              core.exportVariable("ADMIN_USER_NAME", siteTestInfo.adminUsername);
+              core.exportVariable("PASSWORD", siteTestInfo.password);
+            }
       - name: Update Environment Variables From Manual Trigger
         if: github.event_name == 'workflow_dispatch'
         uses: actions/github-script@v6
