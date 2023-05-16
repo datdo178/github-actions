@@ -70,7 +70,7 @@ jobs:
             
             core.exportVariable("MAIL_SERVER_NAME", commonInfo.mailServer.name);
             core.exportVariable("OUTGOING_MAIL_SERVER", commonInfo.mailServer.outgoingMailServer);
-            core.exportVariable("OUTGOING_PORT_NUMBER", commonInfo.mailServer.outgoingPortNumber);
+            core.exportVariable("OUTGOING_PORT_NUMBER", "${{ env.GAROON_TYPE}}" == "Cloud" ? commonInfo.mailServer.outgoingPortNumber.cloud : commonInfo.mailServer.outgoingPortNumber.onpre);
             core.exportVariable("ENCRYPTION_TYPE", commonInfo.mailServer.encryptionType);
             core.exportVariable("SMTP_AUTHENTICATION_TYPE", commonInfo.mailServer.smtpAuthenticationType);
             core.exportVariable("INCOMING_MAIL_SERVER", commonInfo.mailServer.incomingMailServer);
@@ -108,6 +108,7 @@ jobs:
             core.exportVariable("ARCHIVE_FOLDER", "${{ github.event.inputs.ARCHIVE_FOLDER }}");
             core.exportVariable("GAROON_ARCHIVE", "${{ github.event.inputs.GAROON_ARCHIVE }}");
             core.exportVariable("GAROON_TYPE", "${{ github.event.inputs.GAROON_TYPE }}" || "${{ env.GAROON_TYPE }}");
+            core.exportVariable("OUTGOING_PORT_NUMBER", "${{ env.GAROON_TYPE}}" == "Cloud" ? commonInfo.mailServer.outgoingPortNumber.cloud : commonInfo.mailServer.outgoingPortNumber.onpre);
       - name: Sprint Env
         run: |
           ./reflect_config.sh \

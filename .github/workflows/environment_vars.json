@@ -19,7 +19,10 @@
     "mailServer": {
       "name": "kagoya",
       "outgoingMailServer": "smtp.kagoya.net",
-      "outgoingPortNumber": 25,
+      "outgoingPortNumber": {
+        "cloud": 25,
+        "onpre": 587
+      },
       "encryptionType": "None",
       "smtpAuthenticationType": "LOGIN",
       "incomingMailServer": "m18.kagoya.net",
