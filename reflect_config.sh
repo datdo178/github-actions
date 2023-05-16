@@ -1,3 +1,9 @@
+ARG_QUANTITY=$#
+if [ ARG_QUANTITY != 20 ]
+  print "Not enough arguments"
+  exit 1
+fi
+
 MASTERFILE=./config/testing_template.properties
 DESTFILE=./config/testing.properties
 
