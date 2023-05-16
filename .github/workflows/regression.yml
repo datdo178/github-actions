@@ -7,9 +7,9 @@ on:
     - cron: '0 12 * * 1-5'
   workflow_dispatch:
     inputs:
-      SPECIFIC_TESTING_BRANCH:
+      TESTING_BRANCH:
         required: false
-        description: 'SPECIFIC_TESTING_BRANCH - If you select an options for this variable, you can ignore inputting value for variables below (the default values for the selected options will be applied)'
+        description: 'SPECIFIC_TESTING_BRANCH \n If you select an options for this variable, you can ignore inputting value for variables below (the default values for the selected options will be applied)'
         default: 'None'
         type: 'choice'
         options:
