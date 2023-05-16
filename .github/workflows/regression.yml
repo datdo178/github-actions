@@ -72,7 +72,7 @@ jobs:
             core.exportVariable("OUTGOING_MAIL_SERVER", commonInfo.mailServer.outgoingMailServer);
             core.exportVariable("OUTGOING_PORT_NUMBER_CLOUD", commonInfo.mailServer.outgoingPortNumber.cloud);
             core.exportVariable("OUTGOING_PORT_NUMBER_ONPRE", commonInfo.mailServer.outgoingPortNumber.onpre);
-            core.exportVariable("OUTGOING_PORT_NUMBER", "${{ env.GAROON_TYPE}}" == "Cloud" ? ${{ env.OUTGOING_PORT_NUMBER_CLOUD }} : ${{ env.OUTGOING_PORT_NUMBER_ONPRE }});
+            core.exportVariable("OUTGOING_PORT_NUMBER",  siteTestInfo.garoonType == "Cloud" ? commonInfo.mailServer.outgoingPortNumber.cloud : commonInfo.mailServer.outgoingPortNumber.onpre);
             core.exportVariable("ENCRYPTION_TYPE", commonInfo.mailServer.encryptionType);
             core.exportVariable("SMTP_AUTHENTICATION_TYPE", commonInfo.mailServer.smtpAuthenticationType);
             core.exportVariable("INCOMING_MAIL_SERVER", commonInfo.mailServer.incomingMailServer);
