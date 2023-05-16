@@ -9,7 +9,7 @@ on:
     inputs:
       TESTING_BRANCH:
         required: false
-        description: 'SPECIFIC_TESTING_BRANCH \\n If you select an options for this variable, you can ignore inputting value for variables below (the default values for the selected options will be applied)'
+        description: 'SPECIFIC_TESTING_BRANCH - If select a specific branch, you can ignore inputting value for variables below (the default values for the selected options will be applied)'
         default: 'None'
         type: 'choice'
         options:
@@ -36,10 +36,10 @@ on:
       GAROON_BRANCH_NAME:
         type: string
       ARCHIVE_FOLDER:
-        description: 'ARCHIVE_FOLDER (e.g: 202305100817_1172324)'
+        description: 'ARCHIVE_FOLDER (e.g: 202305100817_1172324, if not using an task branch, ignore this to install with latest archive)'
         type: string
       GAROON_ARCHIVE:
-        description: 'GAROON_ARCHIVE (e.g: garoon-GRF23.5_1172324.tgz)'
+        description: 'GAROON_ARCHIVE (e.g: garoon-GRF23.5_1172324.tgz, if not using an task branch, ignore this to install with latest archive)'
         type: string
       GAROON_TYPE:
         type: choice
@@ -60,23 +60,29 @@ jobs:
         with:
           script: |
             const envInfo = require("./.github/workflows/schedule.json");
-            const commonInfo = envInfo.common;
+            const commonInfo = envInfo.commonInfo;
+            const branchNames = {
+              "0 10 * * 1-5": "F23.5",
+              "0 12 * * 1-5": "F23.6"
+            }
             const branchInfo = envInfo["${{ github.event.schedule }}"]
-            
-            core.exportVariable("ADMIN_USERNAME", commonInfo.ADMIN_USERNAME);
-            core.exportVariable("PASSWORD", commonInfo.PASSWORD);
-            core.exportVariable("SERVICE_SET", branchInfo.service_set);
-            core.exportVariable("TESTING_HOST", branchInfo.testing_host);
-      - name: Update Environment Variables From Manual Trigger
-        if: github.event_name == 'workflow_dispatch'
-        uses: actions/github-script@v6
-        with:
-          script: |
-            core.exportVariable('ADMIN_USERNAME', "${{ github.event.inputs.ADMIN_USERNAME }}");
-            core.exportVariable('PASSWORD', "${{ github.event.inputs.PASSWORD }}");
-      - name: Sprint Env
-        run: |
-          echo "${{ env.ADMIN_USERNAME }}"
-          echo "${{ env.PASSWORD }}"
-          echo "${{ env.SERVICE_SET }}"
-          echo "${{ env.TESTING_HOST }}"
+            console.log(commonInfo);
+            console.log(branchInfo)
+
+#            core.exportVariable("ADMIN_USERNAME", commonInfo.ADMIN_USERNAME);
+#            core.exportVariable("PASSWORD", commonInfo.PASSWORD);
+#            core.exportVariable("SERVICE_SET", branchInfo.service_set);
+#            core.exportVariable("TESTING_HOST", branchInfo.testing_host);
+#      - name: Update Environment Variables From Manual Trigger
+#        if: github.event_name == 'workflow_dispatch'
+#        uses: actions/github-script@v6
+#        with:
+#          script: |
+#            core.exportVariable('ADMIN_USERNAME', "${{ github.event.inputs.ADMIN_USERNAME }}");
+#            core.exportVariable('PASSWORD', "${{ github.event.inputs.PASSWORD }}");
+#      - name: Sprint Env
+#        run: |
+#          echo "${{ env.ADMIN_USERNAME }}"
+#          echo "${{ env.PASSWORD }}"
+#          echo "${{ env.SERVICE_SET }}"
+#          echo "${{ env.TESTING_HOST }}"
