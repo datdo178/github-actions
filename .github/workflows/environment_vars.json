@@ -30,11 +30,10 @@
     "emailAccount": {
       "address": "garoon17@hokkyoku.com",
       "account": "kir229261.garoon17",
-      "password": "garoon17"
+      "passwoAPIrd": "garoon17"
     },
     "mailSourceLibKintoneApp": {
       "id": "6113",
-      "apiToken": "mFw4aFkL4KvTIsS0U6bVLcisXfGzwWGjiH98ZEpI",
       "ignoreMailsourceIds": "7,49,65,225,232,236,238,239,240,215,216,188,195,196"
     },
     "setupOptions": {

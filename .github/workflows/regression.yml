@@ -53,13 +53,12 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const envInfo = require("./.github/workflows/schedule.json");
+            const envInfo = require("./.github/workflows/environment_vars.json");
             const commonInfo = envInfo.commonInfo;
             const branchNames = {
               "0 10 * * 1-5": "F23.5",
               "0 12 * * 1-5": "F23.6"
             }
-
             const siteTestInfo = envInfo[branchNames["0 10 * * 1-5"]]
 
             core.exportVariable("SERVICE_SET", siteTestInfo.serviceSet);
@@ -84,7 +83,7 @@ jobs:
             core.exportVariable("EMAIL_ACCOUNT_PASSWORD", commonInfo.emailAccount.password);
             
             core.exportVariable("APP_ID", commonInfo.mailSourceLibKintoneApp.id);
-            core.exportVariable("API_TOKEN", commonInfo.mailSourceLibKintoneApp.apiToken);
+            core.exportVariable("API_TOKEN", ${{ secrets.KINTONE_API_TOKEN }});
             core.exportVariable("IGNORE_MAILSOURCE_IDS", commonInfo.mailSourceLibKintoneApp.ignoreMailsourceIds);
             
             core.exportVariable("IS_SET_UP_MAIL_ACCOUNT", commonInfo.setupOptions.isSetupMailAccount);
@@ -109,6 +108,8 @@ jobs:
             core.exportVariable("ARCHIVE_FOLDER", "${{ github.event.inputs.ARCHIVE_FOLDER }}");
             core.exportVariable("GAROON_ARCHIVE", "${{ github.event.inputs.GAROON_ARCHIVE }}");
             core.exportVariable("GAROON_TYPE", "${{ github.event.inputs.GAROON_TYPE }}" || "${{ env.GAROON_TYPE }}");
+            
+            node ./reflect_config.sh
       - name: Sprint Env
         run: |
           echo "${{ env }}"
