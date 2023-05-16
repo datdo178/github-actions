@@ -1,5 +1,5 @@
 {
-  "0 10 * * 1-5": {
+  "F23.5": {
     "service_set": "mailsource-ga",
     "testing_host": "https://mailsource-ga-1.cybozu-dev.com/g/",
     "garoonVersion": "From_4.5.0",
@@ -7,7 +7,7 @@
     "adminUsername": "cybozu",
     "password": "cybozu"
   },
-  "0 12 * * 1-5": {
+  "F23.6": {
     "service_set": "mailsource-ga",
     "testing_host": "https://mailsource-ga-1.cybozu-dev.com/g/",
     "garoonVersion": "From_4.5.0",
