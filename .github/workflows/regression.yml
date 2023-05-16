@@ -3,8 +3,8 @@ run-name: ${{ github.actor }} 🚀 - Regression
 
 on:
   schedule:
-    - cron: '35 10 * * 1-5'
-    - cron: '40 10 * * 1-5'
+    - cron: '0 11 * * 1-5'
+    - cron: '10 11 * * 1-5'
   workflow_dispatch:
     inputs:
       CONFIGURED_TESTING_BRANCH:
@@ -86,8 +86,8 @@ jobs:
             core.exportVariable("DOWNLOAD_VM_PASSWORD", commonInfo.forDownloadArchiveInfo.downloadVm.password);
             
             const scheduledBranches = {
-              "35 10 * * 1-5": "F23.5",
-              "40 10 * * 1-5": "F23.6"
+              "0 11 * * 1-5": "F23.5",
+              "10 11 * * 1-5": "F23.6"
             }
             const branchName = "${{ github.event_name }}" == "workflow_dispatch"
               ? "${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}"
