@@ -17,12 +17,11 @@ on:
           - "F23.5"
           - "F23.6"
       ADMIN_USERNAME:
-        if: ${{ github.event.input.SPECIFIC_TESTING_BRANCH !== "None" }}
-        required: true
+        if: "a" == "b"
+        required: false
         default: user2
         type: string
       PASSWORD:
-        required: true
         default: abc2
         type: string
       SERVICE_SET:
