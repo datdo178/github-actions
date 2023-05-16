@@ -8,8 +8,8 @@
     "password": "cybozu"
   },
   "F23.6": {
-    "serviceSet": "mailsource-ga",
-    "testingHost": "https://mailsource-ga-1.cybozu-dev.com/g/",
+    "serviceSet": "mailsource-gb",
+    "testingHost": "https://mailsource-gb-1.cybozu-dev.com/g/",
     "garoonVersion": "From_4.5.0",
     "garoonType": "Cloud",
     "adminUsername": "cybozu",
