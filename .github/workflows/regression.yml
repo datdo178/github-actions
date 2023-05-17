@@ -3,8 +3,8 @@ run-name: ${{ github.actor }} 🚀 - Regression
 
 on:
   schedule:
-    - cron: '45 */2 * * 1-5'
-    - cron: '15 */2 * * 1-5'
+    - cron: '55 */1 * * 1-5'
+    - cron: '0 */1 * * 1-5'
   workflow_dispatch:
     inputs:
       CONFIGURED_TESTING_BRANCH:
