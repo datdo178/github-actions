@@ -115,7 +115,7 @@ jobs:
             core.exportVariable("ARCHIVE_FOLDER", "${{ github.event.inputs.ARCHIVE_FOLDER }}");
             core.exportVariable("GAROON_ARCHIVE", "${{ github.event.inputs.GAROON_ARCHIVE }}");
             core.exportVariable("GAROON_TYPE", "${{ github.event.inputs.GAROON_TYPE }}" || "${{ env.GAROON_TYPE }}");
-            core.exportVariable("OUTGOING_PORT_NUMBER", "${{ env.GAROON_TYPE }}" == "Cloud" ? ${{ env.OUTGOING_PORT_NUMBER_CLOUD }} : ${{ env.OUTGOING_PORT_NUMBER_ONPRE }});
+            core.exportVariable("OUTGOING_PORT_NUMBER", "${{ github.event.inputs.GAROON_TYPE }}" == "Cloud" ? ${{ env.OUTGOING_PORT_NUMBER_CLOUD }} : ${{ env.OUTGOING_PORT_NUMBER_ONPRE }});
       - run: |
           ./reflect_config.sh \
           ${{ env.TESTING_HOST }} ${{ env.GAROON_VERSION }} ${{ env.ADMIN_USER_NAME }} ${{ env.PASSWORD }} "${{ env.GAROON_TYPE }}" \
