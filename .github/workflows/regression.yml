@@ -39,10 +39,10 @@ on:
         type: choice
         default: 'Cloud'
         options:
-          - 'cloud'
-          - 'large_scale_linux'
-          - 'normal_linux'
-          - 'normal_windows'
+          - 'Cloud'
+          - 'Large Scale Linux'
+          - 'Normal Linux'
+          - 'Normal Windows'
 
 jobs:
   Explore-GitHub-Actions:
