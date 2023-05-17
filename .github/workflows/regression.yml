@@ -3,8 +3,8 @@ run-name: ${{ github.actor }} 🚀 - Regression
 
 on:
   schedule:
-    - cron: '0 2 * * 1-5'
-    - cron: '5 2 * * 1-5'
+    - cron: '50 2 * * 1-5'
+    - cron: '55 2 * * 1-5'
   workflow_dispatch:
     inputs:
       CONFIGURED_TESTING_BRANCH:
@@ -56,13 +56,12 @@ jobs:
             const envInfo = require("./.github/workflows/environment_vars.json");
             const commonInfo = envInfo.commonInfo;            
             const scheduledBranches = {
-              "0 2 * * 1-5": "F23.5",
-              "5 2 * * 1-5": "F23.6"
+              "50 2 * * 1-5": "F23.5",
+              "55 2 * * 1-5": "F23.6"
             }
             const branchName = "${{ github.event_name }}" == "workflow_dispatch"
               ? "${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}"
-              : scheduledBranches["0 2 * * 1-5"];
-            console.log(branchName);
+              : scheduledBranches["${{ github.event.schedule }}"];
             
             core.exportVariable("MAIL_SERVER_NAME", commonInfo.mailServer.name);
             core.exportVariable("OUTGOING_MAIL_SERVER", commonInfo.mailServer.outgoingMailServer);
@@ -95,7 +94,7 @@ jobs:
             core.exportVariable("DOWNLOAD_VM_PASSWORD", commonInfo.forDownloadArchiveInfo.downloadVm.password);
 
             if (branchName != "None") {
-              const siteTestInfo = envInfo["branchName"];
+              const siteTestInfo = envInfo[branchName];
   
               core.exportVariable("SERVICE_SET", siteTestInfo.serviceSet);
               core.exportVariable("TESTING_HOST", siteTestInfo.testingHost);
