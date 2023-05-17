@@ -52,17 +52,18 @@ jobs:
       - name: Get Testing Info
         uses: actions/github-script@v6
         with:
-          script: |
-            const envInfo = require("./.github/workflows/environment_vars.json");
-            const commonInfo = envInfo.commonInfo;            
+          script: |          
             const scheduledBranches = {
-              "45 */2 * * 1-5": "F23.5",
-              "15 */2 * * 1-5": "F23.6"
+              "0 11,16,21 * * 5-6": "F23.5",
+              "30 13,18,23 * * 5-6": "F23.6"
             }
-            console.log("${{ github.event.schedule }}");
             const branchName = "${{ github.event_name }}" == "workflow_dispatch"
               ? "${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}"
               : scheduledBranches["${{ github.event.schedule }}"];
+            
+            const envInfo = require("./.github/workflows/environment_vars.json");
+            const commonInfo = envInfo.commonInfo;  
+            const siteTestInfo = ennInfo[branchName];
             
             core.exportVariable("MAIL_SERVER_NAME", commonInfo.mailServer.name);
             core.exportVariable("OUTGOING_MAIL_SERVER", commonInfo.mailServer.outgoingMailServer);
@@ -89,20 +90,16 @@ jobs:
             core.exportVariable("force_recreate_service_set", commonInfo.setupOptions.forceRecreateServiceSet);
             
             core.exportVariable("GAROON_BRANCH_NAME", branchName);
-            core.exportVariable("GAROON_VERSION", commonInfo.garoonVersion);
             core.exportVariable("DOWNLOAD_VM_IP", commonInfo.forDownloadArchiveInfo.downloadVm.ip);
             core.exportVariable("DOWNLOAD_VM_USERNAME", commonInfo.forDownloadArchiveInfo.downloadVm.username);
             core.exportVariable("DOWNLOAD_VM_PASSWORD", commonInfo.forDownloadArchiveInfo.downloadVm.password);
 
-            if (branchName != "None") {
-              const siteTestInfo = envInfo[branchName];
-  
-              core.exportVariable("SERVICE_SET", siteTestInfo.serviceSet);
-              core.exportVariable("TESTING_HOST", siteTestInfo.testingHost);
-              core.exportVariable("GAROON_TYPE", siteTestInfo.garoonType);
-              core.exportVariable("ADMIN_USER_NAME", siteTestInfo.adminUsername);
-              core.exportVariable("PASSWORD", siteTestInfo.password);
-            }
+            core.exportVariable("SERVICE_SET", siteTestInfo.serviceSet);
+            core.exportVariable("TESTING_HOST", siteTestInfo.testingHost);
+            core.exportVariable("GAROON_VERSION", siteTestInfo.garoonVersion);
+            core.exportVariable("GAROON_TYPE", siteTestInfo.garoonType);
+            core.exportVariable("ADMIN_USER_NAME", siteTestInfo.adminUsername);
+            core.exportVariable("PASSWORD", siteTestInfo.password);
       - name: Update Testing Info From Manual Trigger Input
         if: github.event_name == 'workflow_dispatch'
         uses: actions/github-script@v6
@@ -117,13 +114,11 @@ jobs:
             core.exportVariable("ARCHIVE_FOLDER", "${{ github.event.inputs.ARCHIVE_FOLDER }}");
             core.exportVariable("GAROON_ARCHIVE", "${{ github.event.inputs.GAROON_ARCHIVE }}");
             core.exportVariable("GAROON_TYPE", "${{ github.event.inputs.GAROON_TYPE }}" || "${{ env.GAROON_TYPE }}");
-            core.exportVariable("OUTGOING_PORT_NUMBER", "${{ env.GAROON_TYPE}}" == "Cloud" ? ${{ env.OUTGOING_PORT_NUMBER_CLOUD }} : ${{ env.OUTGOING_PORT_NUMBER_ONPRE }});
-      - name: Sprint Env
-        run: |
+            core.exportVariable("OUTGOING_PORT_NUMBER", "${{ env.GAROON_TYPE }}" == "Cloud" ? ${{ env.OUTGOING_PORT_NUMBER_CLOUD }} : ${{ env.OUTGOING_PORT_NUMBER_ONPRE }});
+      - run: |
           ./reflect_config.sh \
           ${{ env.TESTING_HOST }} ${{ env.GAROON_VERSION }} ${{ env.ADMIN_USER_NAME }} ${{ env.PASSWORD }} "${{ env.GAROON_TYPE }}" \
           ${{ env.MAIL_SERVER_NAME }} ${{ env.OUTGOING_MAIL_SERVER }} ${{ env.OUTGOING_PORT_NUMBER }} ${{ env.ENCRYPTION_TYPE }} ${{ env.SMTP_AUTHENTICATION_TYPE }} ${{ env.INCOMING_MAIL_SERVER }} ${{ env.RECEIVE_PROTOCOL }} ${{ env.INCOMING_PORT_NUMBER }} ${{ env.USE_OF_SSL }} \
           ${{ env.USER_EMAIL_ADDRESS }} ${{ env.EMAIL_USER_ACCOUNT }} ${{ env.EMAIL_ACCOUNT_PASSWORD }} \
           ${{ env.APP_ID }} ${{ env.API_TOKEN }} ${{ env.IGNORE_MAILSOURCE_IDS }}
-          
           cat ./config/testing.properties

@@ -2,6 +2,7 @@
   "F23.5": {
     "serviceSet": "mailsource-ga",
     "testingHost": "https://mailsource-ga-1.cybozu-dev.com/g/",
+    "garoonVersion": "From_4.5.0",
     "garoonType": "Cloud",
     "adminUsername": "cybozu",
     "password": "cybozu"
@@ -9,12 +10,21 @@
   "F23.6": {
     "serviceSet": "mailsource-gb",
     "testingHost": "https://mailsource-gb-1.cybozu-dev.com/g/",
+    "garoonVersion": "From_4.5.0",
+    "garoonType": "Cloud",
+    "adminUsername": "cybozu",
+    "password": "cybozu"
+  },
+  "None": {
+    "desc": "Default values in case not selecting any configured branch",
+    "serviceSet": "",
+    "testingHost": "",
+    "garoonVersion": "From_4.5.0",
     "garoonType": "Cloud",
     "adminUsername": "cybozu",
     "password": "cybozu"
   },
   "commonInfo": {
-    "garoonVersion": "From_4.5.0",
     "mailServer": {
       "name": "kagoya",
       "outgoingMailServer": "smtp.kagoya.net",
