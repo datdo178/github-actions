@@ -3,8 +3,8 @@ run-name: ${{ github.actor }} 🚀 - Regression
 
 on:
   schedule:
-    - cron: '50 2 * * 1-5'
-    - cron: '55 2 * * 1-5'
+    - cron: '45 */2 * * 1-5'
+    - cron: '15 */2 * * 1-5'
   workflow_dispatch:
     inputs:
       CONFIGURED_TESTING_BRANCH:
@@ -56,9 +56,10 @@ jobs:
             const envInfo = require("./.github/workflows/environment_vars.json");
             const commonInfo = envInfo.commonInfo;            
             const scheduledBranches = {
-              "50 2 * * 1-5": "F23.5",
-              "55 2 * * 1-5": "F23.6"
+              "45 */2 * * 1-5": "F23.5",
+              "15 */2 * * 1-5": "F23.6"
             }
+            console.log("${{ github.event.schedule }}");
             const branchName = "${{ github.event_name }}" == "workflow_dispatch"
               ? "${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}"
               : scheduledBranches["${{ github.event.schedule }}"];
