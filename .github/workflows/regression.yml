@@ -123,3 +123,13 @@ jobs:
           ${{ env.USER_EMAIL_ADDRESS }} ${{ env.EMAIL_USER_ACCOUNT }} ${{ env.EMAIL_ACCOUNT_PASSWORD }} \
           ${{ env.APP_ID }} ${{ env.API_TOKEN }} ${{ env.IGNORE_MAILSOURCE_IDS }}
           cat ./config/testing.properties
+      - name: Setup Garoon Testing Site (with latest archive)
+        if: |
+          env.GAROON_TYPE == 'Cloud' && env.force_recreate_service_set == 'true' &&
+          !(env.ARCHIVE_FOLDER && env.GAROON_ARCHIVE)
+        run: echo "Deploy latest"
+      - name: Setup Garoon Testing Site (with latest archive)
+        if: |
+          env.GAROON_TYPE == 'Cloud' && env.force_recreate_service_set == 'true' &&
+          env.GAROON_BRANCH_NAME && env.ARCHIVE_FOLDER && env.GAROON_ARCHIVE
+        run: echo "Deploy latest specific"
