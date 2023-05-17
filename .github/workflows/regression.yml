@@ -105,7 +105,6 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log("Input values:", "${{ github.event.inputs }}");
             core.exportVariable("force_recreate_service_set", ${{ github.event.inputs.force_recreate_service_set }});
             core.exportVariable("SERVICE_SET", "${{ github.event.inputs.SERVICE_SET }}" || "${{ env.SERVICE_SET }}");
             core.exportVariable("TESTING_HOST", "${{ github.event.inputs.TESTING_HOST }}" || "${{ env.TESTING_HOST }}");
@@ -117,6 +116,7 @@ jobs:
             core.exportVariable("GAROON_TYPE", "${{ github.event.inputs.GAROON_TYPE }}" || "${{ env.GAROON_TYPE }}");
             core.exportVariable("OUTGOING_PORT_NUMBER", "${{ github.event.inputs.GAROON_TYPE }}" == "Cloud" ? ${{ env.OUTGOING_PORT_NUMBER_CLOUD }} : ${{ env.OUTGOING_PORT_NUMBER_ONPRE }});
       - run: |
+          echo "Input from manual trigger: ${{ github.event.inputs }}"
           ./reflect_config.sh \
           ${{ env.TESTING_HOST }} ${{ env.GAROON_VERSION }} ${{ env.ADMIN_USER_NAME }} ${{ env.PASSWORD }} "${{ env.GAROON_TYPE }}" \
           ${{ env.MAIL_SERVER_NAME }} ${{ env.OUTGOING_MAIL_SERVER }} ${{ env.OUTGOING_PORT_NUMBER }} ${{ env.ENCRYPTION_TYPE }} ${{ env.SMTP_AUTHENTICATION_TYPE }} ${{ env.INCOMING_MAIL_SERVER }} ${{ env.RECEIVE_PROTOCOL }} ${{ env.INCOMING_PORT_NUMBER }} ${{ env.USE_OF_SSL }} \
@@ -128,8 +128,8 @@ jobs:
           env.GAROON_TYPE == 'Cloud' && env.force_recreate_service_set == 'true' &&
           !(env.ARCHIVE_FOLDER && env.GAROON_ARCHIVE)
         run: echo "Deploy latest"
-      - name: Setup Garoon Testing Site (with latest archive)
+      - name: Setup Garoon Testing Site (with specific archive)
         if: |
           env.GAROON_TYPE == 'Cloud' && env.force_recreate_service_set == 'true' &&
           env.GAROON_BRANCH_NAME && env.ARCHIVE_FOLDER && env.GAROON_ARCHIVE
-        run: echo "Deploy latest specific"
+        run: echo "Deploy specific"
