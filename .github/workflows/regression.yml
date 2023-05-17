@@ -120,7 +120,7 @@ jobs:
       - name: Sprint Env
         run: |
           ./reflect_config.sh \
-          ${{ env.TESTING_HOST }} ${{ env.GAROON_VERSION }} ${{ env.ADMIN_USER_NAME }} ${{ env.PASSWORD }} ${{ env.GAROON_TYPE }} \
+          ${{ env.TESTING_HOST }} ${{ env.GAROON_VERSION }} ${{ env.ADMIN_USER_NAME }} ${{ env.PASSWORD }} "${{ env.GAROON_TYPE }}" \
           ${{ env.MAIL_SERVER_NAME }} ${{ env.OUTGOING_MAIL_SERVER }} ${{ env.OUTGOING_PORT_NUMBER }} ${{ env.ENCRYPTION_TYPE }} ${{ env.SMTP_AUTHENTICATION_TYPE }} ${{ env.INCOMING_MAIL_SERVER }} ${{ env.RECEIVE_PROTOCOL }} ${{ env.INCOMING_PORT_NUMBER }} ${{ env.USE_OF_SSL }} \
           ${{ env.USER_EMAIL_ADDRESS }} ${{ env.EMAIL_USER_ACCOUNT }} ${{ env.EMAIL_ACCOUNT_PASSWORD }} \
           ${{ env.APP_ID }} ${{ env.API_TOKEN }} ${{ env.IGNORE_MAILSOURCE_IDS }}
