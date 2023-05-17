@@ -105,7 +105,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log("Input values:", ${{ github.event.inputs }});
+            console.log("Input values:", "${{ github.event.inputs }}");
             core.exportVariable("force_recreate_service_set", ${{ github.event.inputs.force_recreate_service_set }});
             core.exportVariable("SERVICE_SET", "${{ github.event.inputs.SERVICE_SET }}" || "${{ env.SERVICE_SET }}");
             core.exportVariable("TESTING_HOST", "${{ github.event.inputs.TESTING_HOST }}" || "${{ env.TESTING_HOST }}");
