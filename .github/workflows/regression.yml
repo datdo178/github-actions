@@ -63,7 +63,7 @@ jobs:
             
             const envInfo = require("./.github/workflows/environment_vars.json");
             const commonInfo = envInfo.commonInfo;  
-            const siteTestInfo = evnInfo[branchName];
+            const siteTestInfo = envInfo[branchName];
             
             core.exportVariable("MAIL_SERVER_NAME", commonInfo.mailServer.name);
             core.exportVariable("OUTGOING_MAIL_SERVER", commonInfo.mailServer.outgoingMailServer);
