@@ -1,7 +1,7 @@
 ARG_QUANTITY=$#
 if [ $ARG_QUANTITY != 20 ]
 then
-  echo "Error: Number of argument does not match. Expect: 20. Actual $ARG_QUANTITY."
+  echo "Error: Argument quantity is not true. Expect: 20. Actual $ARG_QUANTITY."
   exit 1
 fi
 
