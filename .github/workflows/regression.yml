@@ -39,10 +39,10 @@ on:
         type: choice
         default: 'Cloud'
         options:
-          - 'Cloud'
-          - 'Large Scale Linux'
-          - 'Normal Linux'
-          - 'Normal Windows'
+          - 'cloud'
+          - 'large_scale_linux'
+          - 'normal_linux'
+          - 'normal_windows'
 
 jobs:
   Explore-GitHub-Actions:
@@ -61,7 +61,7 @@ jobs:
             }
             const branchName = "${{ github.event_name }}" == "workflow_dispatch"
               ? "${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}"
-              : scheduledBranchNames["${{ github.event.schedule }}"];
+              : scheduledBranches["${{ github.event.schedule }}"];
             
             core.exportVariable("MAIL_SERVER_NAME", commonInfo.mailServer.name);
             core.exportVariable("OUTGOING_MAIL_SERVER", commonInfo.mailServer.outgoingMailServer);
