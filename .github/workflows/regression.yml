@@ -3,8 +3,8 @@ run-name: ${{ github.actor }} 🚀 - Regression
 
 on:
   schedule:
-    - cron: '0 11 * * 1-5'
-    - cron: '10 11 * * 1-5'
+    - cron: '0 2 * * 1-5'
+    - cron: '5 2 * * 1-5'
   workflow_dispatch:
     inputs:
       CONFIGURED_TESTING_BRANCH:
@@ -56,8 +56,8 @@ jobs:
             const envInfo = require("./.github/workflows/environment_vars.json");
             const commonInfo = envInfo.commonInfo;            
             const scheduledBranches = {
-              "0 11 * * 1-5": "F23.5",
-              "10 11 * * 1-5": "F23.6"
+              "0 2 * * 1-5": "F23.5",
+              "5 2 * * 1-5": "F23.6"
             }
             const branchName = "${{ github.event_name }}" == "workflow_dispatch"
               ? "${{ github.event.inputs.CONFIGURED_TESTING_BRANCH}}"
@@ -88,6 +88,7 @@ jobs:
             core.exportVariable("force_recreate_service_set", commonInfo.setupOptions.forceRecreateServiceSet);
             
             core.exportVariable("GAROON_BRANCH_NAME", branchName);
+            core.exportVariable("GAROON_VERSION", commonInfo.garoonVersion);
             core.exportVariable("DOWNLOAD_VM_IP", commonInfo.forDownloadArchiveInfo.downloadVm.ip);
             core.exportVariable("DOWNLOAD_VM_USERNAME", commonInfo.forDownloadArchiveInfo.downloadVm.username);
             core.exportVariable("DOWNLOAD_VM_PASSWORD", commonInfo.forDownloadArchiveInfo.downloadVm.password);
@@ -97,7 +98,6 @@ jobs:
   
               core.exportVariable("SERVICE_SET", siteTestInfo.serviceSet);
               core.exportVariable("TESTING_HOST", siteTestInfo.testingHost);
-              core.exportVariable("GAROON_VERSION", siteTestInfo.garoonVersion);
               core.exportVariable("GAROON_TYPE", siteTestInfo.garoonType);
               core.exportVariable("ADMIN_USER_NAME", siteTestInfo.adminUsername);
               core.exportVariable("PASSWORD", siteTestInfo.password);
