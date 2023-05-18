@@ -16,7 +16,7 @@
     "password": "cybozu"
   },
   "None": {
-    "desc": "Default values in case not selecting any configured branch",
+    "desc": "Default values for case not selecting any configured branch",
     "serviceSet": "",
     "testingHost": "",
     "garoonVersion": "From_4.5.0",
