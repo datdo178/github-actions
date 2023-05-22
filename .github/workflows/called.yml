@@ -1,0 +1,12 @@
+name: GR Mailsource
+
+on:
+  workflow_call:
+    inputs:
+      GAROON_VERSION:
+        required: true
+        type: string
+
+jobs:
+  test:
+    - run: echo ${{ github.event.inputs.GAROON_VERSION }}
