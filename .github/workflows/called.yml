@@ -11,4 +11,4 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - run: echo "${{ github.event.inputs.GAROON_VERSION }}"
+    - run: echo "${{ inputs.GAROON_VERSION }}"
