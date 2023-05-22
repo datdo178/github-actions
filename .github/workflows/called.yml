@@ -9,4 +9,5 @@ on:
 
 jobs:
   test:
-    - run: echo ${{ github.event.inputs.GAROON_VERSION }}
+    steps:
+      - run: echo ${{ github.event.inputs.GAROON_VERSION }}
