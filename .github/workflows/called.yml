@@ -1,10 +1,14 @@
-name: Reusable workflow example
+name: GR Mailsource
 
 on:
   workflow_call:
+    inputs:
+      GAROON_VERSION:
+        required: true
+        type: string
 
 jobs:
-  triage:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "abc"
+    - run: echo ${{ github.event.inputs.GAROON_VERSION }}
