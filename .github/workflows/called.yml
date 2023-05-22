@@ -10,4 +10,5 @@ on:
 jobs:
   test:
     steps:
+      - uses: actions/checkout@v3
       - run: echo ${{ github.event.inputs.GAROON_VERSION }}
