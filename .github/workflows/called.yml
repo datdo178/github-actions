@@ -13,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          repository: datdo178/github-actions
           ref: test
       - run: echo "${{ inputs.GAROON_VERSION }}"
       - run: ls
