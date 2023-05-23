@@ -1,0 +1,20 @@
+name: GR Mailsource
+
+on:
+  workflow_call:
+    inputs:
+      GAROON_VERSION:
+        required: true
+        type: string
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set environment variables
+        use: actions/github-script@v6
+        with:
+          script: |
+            const siteTest = "https://con.cybozu-dev.com"
+            switch (siteTest):
+              case siteTest.
