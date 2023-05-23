@@ -13,5 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: test-branch
+          ref: test
       - run: echo "${{ inputs.GAROON_VERSION }}"
