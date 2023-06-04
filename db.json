@@ -1,8 +1,104 @@
 {
-  "posts": [
-    { "id": 1, "title": "Post 1" },
-    { "id": 2, "title": "Post 2" },
-    { "id": 3, "title": "Post 3" }
+  "emails": [
+    {
+      "sentTime": "2023-06-03T14:18:16.781Z",
+      "from": "Hipolito.Schimmel@hotmail.com",
+      "to": [],
+      "title": "Aliquid recusandae nulla doloremque aut modi natus ipsam.",
+      "content": "Eos cupiditate repudiandae. Ea repellat pariatur asperiores molestiae. Nesciunt iste blanditiis magnam assumenda. Consequuntur consectetur consequatur. Sint autem aliquam assumenda quibusdam consequuntur earum.\nIncidunt dignissimos est ea. Iusto illum nobis voluptate quas repellat. Ex voluptas dolorum alias quod voluptatum commodi natus officia illo. Doloribus excepturi aliquam ratione neque.\nTempore culpa occaecati doloremque exercitationem sequi molestiae quasi. Iure incidunt optio quos rerum provident sed ipsum. Hic culpa ullam cumque ipsa. Labore pariatur occaecati eos laborum fugit quod earum veritatis. Magnam aliquam aliquid.",
+      "isRead": true,
+      "isStared": false,
+      "id": "1",
+      "folderId": "1"
+    },
+    {
+      "sentTime": "2023-06-03T09:33:58.966Z",
+      "from": "Sigmund_Jones85@gmail.com",
+      "to": [],
+      "title": "Exercitationem iste ad incidunt veritatis quis.",
+      "content": "Accusamus natus ipsa placeat tempore recusandae a dolore fugiat. Impedit est architecto cupiditate corrupti. Dolore occaecati enim excepturi iure voluptatibus architecto minima asperiores magni. Placeat ipsa accusantium exercitationem maiores. Impedit veniam deserunt molestiae. Nostrum voluptas necessitatibus eveniet totam aliquid maiores architecto.\nRepellendus dolores veritatis sequi harum velit. Cupiditate voluptatem nulla omnis iure rerum totam distinctio nihil. Quo dolorem incidunt ipsum. Nesciunt quaerat adipisci ullam maxime possimus ab eum saepe. Velit aspernatur dicta animi deleniti.\nPraesentium soluta fugit cumque. Minima voluptatibus nemo temporibus facilis magni delectus nihil rem magnam. Tempore sed commodi nam reiciendis.",
+      "isRead": true,
+      "isStared": false,
+      "id": "2",
+      "folderId": "2"
+    },
+    {
+      "sentTime": "2023-06-03T10:58:18.063Z",
+      "from": "Rosa.Jast34@gmail.com",
+      "to": [],
+      "title": "Earum aspernatur pariatur veniam soluta.",
+      "content": "Tempore quam sequi dolor quia fugiat minus. Pariatur porro odio amet in laborum. Autem debitis corrupti explicabo error. Maiores libero assumenda temporibus explicabo perferendis consequuntur.\nArchitecto saepe ab delectus eveniet id voluptatem nisi laboriosam totam. Beatae iste itaque fuga quae nulla nisi ducimus tenetur sequi. Est quos officia id necessitatibus. Debitis eaque quo impedit dolores sunt laborum. Occaecati error ullam occaecati inventore et nostrum nobis.\nMolestiae at sunt modi autem vero dolore. Incidunt ratione quo quas. A libero nulla.",
+      "isRead": false,
+      "isStared": false,
+      "id": "3",
+      "folderId": "3"
+    },
+    {
+      "sentTime": "2023-06-03T14:15:40.930Z",
+      "from": "Timmy38@hotmail.com",
+      "to": [],
+      "title": "Consequatur minus nostrum consectetur.",
+      "content": "Quos totam in quasi quia molestiae illo aliquid sapiente nam. Inventore molestias iste corporis totam. Voluptates accusamus pariatur ipsa quasi odit fugiat earum inventore corporis. Dolore culpa neque quas. Asperiores culpa libero quis culpa nulla blanditiis iure illo.\nQuo laborum voluptas placeat debitis natus. Aut eaque alias voluptatum dolore aliquam ipsam. Animi labore iste maxime magnam. Nemo sint quis.\nNam quibusdam quo mollitia dolorum nulla eum rerum labore. Amet maiores provident rem corporis rem mollitia. Unde dolores molestias quaerat officiis.",
+      "isRead": false,
+      "isStared": false,
+      "id": "4",
+      "folderId": "4"
+    },
+    {
+      "sentTime": "2023-06-03T00:22:12.357Z",
+      "from": "Ryley.Lesch@gmail.com",
+      "to": [],
+      "title": "Molestiae error quidem perferendis praesentium amet minus tenetur laudantium in.",
+      "content": "Aperiam ad ducimus consectetur. Soluta soluta deleniti a corrupti est sunt ea. Ipsam ullam doloribus dolor. Voluptas beatae eius quos.\nNam alias libero culpa hic. Placeat nam laudantium eaque. Natus ad odio ad voluptatibus. Nesciunt laboriosam sunt eaque itaque. Veritatis est id dolorem aliquam assumenda aut est. Optio voluptate deserunt exercitationem error animi.\nOccaecati vitae ullam error eveniet neque fugiat facere molestiae. Quia veniam repellendus. Magnam doloribus nobis magnam iure ratione adipisci dolore ut. Commodi quae repellat eaque asperiores fugit laborum assumenda labore modi.",
+      "isRead": false,
+      "isStared": false,
+      "id": "5",
+      "folderId": "5"
+    },
+    {
+      "sentTime": "2023-06-02T17:14:28.127Z",
+      "from": "Jackeline.Kirlin10@yahoo.com",
+      "to": [],
+      "title": "Sapiente dignissimos tempore accusamus sunt.",
+      "content": "Inventore laboriosam ut explicabo voluptas id ea ab error non. Numquam autem illum sit officiis omnis vero. Aut voluptate reprehenderit in quis sapiente. Harum inventore magnam laudantium occaecati.\nIure laudantium voluptates inventore. Asperiores blanditiis impedit voluptates atque nulla. Corporis dignissimos tenetur modi provident et. Adipisci eligendi quas dolorum doloremque nostrum dicta.\nVoluptatum quis labore ipsum debitis dolores fugit corrupti. Quasi rem similique dolore ex placeat eveniet. Cum dolorem aspernatur tempora. Beatae nesciunt placeat reiciendis animi odit officia.",
+      "isRead": false,
+      "isStared": false,
+      "id": "6",
+      "folderId": "1"
+    },
+    {
+      "sentTime": "2023-06-02T23:53:53.993Z",
+      "from": "Cecelia.Ernser@hotmail.com",
+      "to": [],
+      "title": "Mollitia sed delectus omnis aperiam.",
+      "content": "Qui vitae quia voluptatem corporis at expedita ut. Numquam eum maxime fugit. Laudantium perspiciatis corrupti. Fugit repudiandae incidunt commodi ad. Dignissimos repellendus molestias natus illo eveniet possimus. Et at perferendis minus est quod quasi.\nPossimus ullam doloribus exercitationem. Cumque iure consequatur eaque enim rerum saepe reprehenderit placeat. Nostrum et enim accusamus esse quisquam perspiciatis nostrum exercitationem. Perferendis ab tempora provident soluta minima.\nEnim corrupti officiis suscipit. Blanditiis quibusdam distinctio voluptatum optio. Rem libero commodi assumenda. Laudantium nobis incidunt aperiam unde enim tempora necessitatibus recusandae.",
+      "isRead": false,
+      "isStared": false,
+      "id": "7",
+      "folderId": "2"
+    },
+    {
+      "sentTime": "2023-06-03T02:23:17.390Z",
+      "from": "Mavis_Zemlak6@gmail.com",
+      "to": [],
+      "title": "Iusto a facilis perspiciatis nemo quos.",
+      "content": "Non quaerat facere. Harum nesciunt consectetur. Maxime deleniti neque nobis. Accusamus doloribus repellat facilis ad id. Doloremque autem nesciunt nisi pariatur necessitatibus. Et alias hic doloribus blanditiis facere quidem et nesciunt.\nSoluta velit aut nostrum ab. Quidem eos voluptatem eum vel eveniet illum nihil architecto ea. Qui quod nemo ipsum non quis occaecati. Ipsam a dignissimos nemo occaecati consequatur aliquid non.\nMolestiae ex ipsa facilis temporibus vel eligendi. Quae perspiciatis odio odio laboriosam consectetur cum et vero qui. Aperiam dolores a. Eius hic quidem provident quis corrupti quo iste modi. Sed nisi quae nemo vero doloremque tenetur ad.",
+      "isRead": false,
+      "isStared": false,
+      "id": "8",
+      "folderId": "3"
+    },
+    {
+      "sentTime": "2023-06-02T18:36:43.015Z",
+      "from": "Jett70@yahoo.com",
+      "to": [],
+      "title": "Repudiandae itaque praesentium deleniti non molestiae voluptas eligendi voluptatibus id.",
+      "content": "In consectetur ipsam odit praesentium temporibus. Ex illum dignissimos vero aspernatur rerum. Ad accusantium pariatur consectetur ratione nihil harum voluptas. Velit porro quis nam amet accusamus veniam.\nCum fuga impedit. Non quod adipisci esse a hic reiciendis. Fugiat impedit corporis doloribus numquam porro.\nQuod consectetur natus rerum excepturi. Quis nulla facere sequi quaerat error non tempora odio. Cumque maxime quisquam cumque quis fugit et. Consequuntur officiis ipsum enim ad rem quaerat eum. Totam recusandae id id. Doloremque sit quia.",
+      "isRead": false,
+      "isStared": false,
+      "id": "9",
+      "folderId": "4"
+    }
   ],
   "comments": [
     { "id": 1, "body": "some comment", "postId": 1 },
