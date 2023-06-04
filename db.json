@@ -1,35 +1,14 @@
-[
-  {
-    "sentTime": "2023-06-03T14:18:16.781Z",
-    "from": "Hipolito.Schimmel@hotmail.com",
-    "to": [],
-    "title": "Aliquid recusandae nulla doloremque aut modi natus ipsam.",
-    "content": "Eos cupiditate repudiandae. Ea repellat pariatur asperiores molestiae. Nesciunt iste blanditiis magnam assumenda. Consequuntur consectetur consequatur. Sint autem aliquam assumenda quibusdam consequuntur earum.\nIncidunt dignissimos est ea. Iusto illum nobis voluptate quas repellat. Ex voluptas dolorum alias quod voluptatum commodi natus officia illo. Doloribus excepturi aliquam ratione neque.\nTempore culpa occaecati doloremque exercitationem sequi molestiae quasi. Iure incidunt optio quos rerum provident sed ipsum. Hic culpa ullam cumque ipsa. Labore pariatur occaecati eos laborum fugit quod earum veritatis. Magnam aliquam aliquid.",
-    "isRead": true,
-    "isStared": false,
-    "id": "1",
-    "folderId": "1"
-  },
-  {
-    "sentTime": "2023-06-03T09:33:58.966Z",
-    "from": "Sigmund_Jones85@gmail.com",
-    "to": [],
-    "title": "Exercitationem iste ad incidunt veritatis quis.",
-    "content": "Accusamus natus ipsa placeat tempore recusandae a dolore fugiat. Impedit est architecto cupiditate corrupti. Dolore occaecati enim excepturi iure voluptatibus architecto minima asperiores magni. Placeat ipsa accusantium exercitationem maiores. Impedit veniam deserunt molestiae. Nostrum voluptas necessitatibus eveniet totam aliquid maiores architecto.\nRepellendus dolores veritatis sequi harum velit. Cupiditate voluptatem nulla omnis iure rerum totam distinctio nihil. Quo dolorem incidunt ipsum. Nesciunt quaerat adipisci ullam maxime possimus ab eum saepe. Velit aspernatur dicta animi deleniti.\nPraesentium soluta fugit cumque. Minima voluptatibus nemo temporibus facilis magni delectus nihil rem magnam. Tempore sed commodi nam reiciendis.",
-    "isRead": true,
-    "isStared": false,
-    "id": "2",
-    "folderId": "2"
-  },
-  {
-    "sentTime": "2023-06-03T10:58:18.063Z",
-    "from": "Rosa.Jast34@gmail.com",
-    "to": [],
-    "title": "Earum aspernatur pariatur veniam soluta.",
-    "content": "Tempore quam sequi dolor quia fugiat minus. Pariatur porro odio amet in laborum. Autem debitis corrupti explicabo error. Maiores libero assumenda temporibus explicabo perferendis consequuntur.\nArchitecto saepe ab delectus eveniet id voluptatem nisi laboriosam totam. Beatae iste itaque fuga quae nulla nisi ducimus tenetur sequi. Est quos officia id necessitatibus. Debitis eaque quo impedit dolores sunt laborum. Occaecati error ullam occaecati inventore et nostrum nobis.\nMolestiae at sunt modi autem vero dolore. Incidunt ratione quo quas. A libero nulla.",
-    "isRead": false,
-    "isStared": false,
-    "id": "3",
-    "folderId": "3"
+{
+  "posts": [
+    { "id": 1, "title": "Post 1" },
+    { "id": 2, "title": "Post 2" },
+    { "id": 3, "title": "Post 3" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 },
+    { "id": 2, "body": "some comment", "postId": 1 }
+  ],
+  "profile": {
+    "name": "typicode"
   }
-]
+}
