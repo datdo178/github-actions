@@ -1,5 +1,5 @@
 name: Run Name
-run-name: ${{ github.env.edition }} - ${{ github.event.inputs.edition }} - ABC
+run-name: $edition - ${{ github.event.inputs.edition }} - ABC
 
 env:
   edition: 'abc'
