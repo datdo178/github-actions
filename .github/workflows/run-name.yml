@@ -7,7 +7,7 @@ on:
   push:
   workflow_dispatch:
     inputs:
-      cron:
+      edition:
         required: false
         description: 'CONFIGURED_TESTING_BRANCH - If select a specific branch, you can ignore variables below (default values will be applied)'
         default: 'F23.5'
@@ -18,7 +18,7 @@ on:
           - 'F23.6'
           - 'F23.7'
 
-run-name: ${{ env.edition }} - ABC
+run-name: ${{ github.inputs.edition || "" }} - ABC
 
 jobs:
   test:
