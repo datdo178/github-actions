@@ -18,7 +18,7 @@ on:
           - 'F23.6'
           - 'F23.7'
 
-run-name: ${{ env.edition[github.event.inputs.cron] }} - Test
+run-name: ${{ env.edition }} - ABC
 
 jobs:
   test:
