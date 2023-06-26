@@ -1,5 +1,4 @@
 name: Run Name
-run-name: ${{ env.edition[github.event.inputs.cron] }} - Test
 
 env:
   - edition: '{"0 21 * * 1-4,0":"F23.7","0 19 * * 1-4,0":"F23.6"}'
@@ -18,6 +17,8 @@ on:
           - 'F23.5'
           - 'F23.6'
           - 'F23.7'
+
+run-name: ${{ env.edition[github.event.inputs.cron] }} - Test
 
 jobs:
   test:
