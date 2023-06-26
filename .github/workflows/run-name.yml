@@ -18,7 +18,7 @@ on:
           - 'F23.6'
           - 'F23.7'
 
-run-name: ${{ github.inputs.edition || "" }} - ABC
+run-name: ${{ github.inputs.edition }} - ABC
 
 jobs:
   test:
