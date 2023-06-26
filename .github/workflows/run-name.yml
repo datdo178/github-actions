@@ -1,13 +1,23 @@
 name: Run Name
-run-name: ${{ env["0 21 * * 1-4,0"] }} - Test
+run-name: ${{ env.edition[github.event.inputs.cron] }} - Test
 
 env:
-  - "0 21 * * 1-4,0": "F23.5"
-  - "0 21 * * 1-4,0": "F23.7"
+  - edition: '{"0 21 * * 1-4,0":"F23.7","0 19 * * 1-4,0":"F23.6"}'
 
 on:
   push:
   workflow_dispatch:
+    inputs:
+      cron:
+        required: false
+        description: 'CONFIGURED_TESTING_BRANCH - If select a specific branch, you can ignore variables below (default values will be applied)'
+        default: 'F23.5'
+        type: 'choice'
+        options:
+          - 'None'
+          - 'F23.5'
+          - 'F23.6'
+          - 'F23.7'
 
 jobs:
   test:
