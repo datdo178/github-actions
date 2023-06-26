@@ -1,4 +1,9 @@
 name: GR Mailsource
+run-name: ${{ env["0 21 * * 1-4,0"] }} - Test
+
+env:
+  - "0 21 * * 1-4,0": "F23.5"
+  - "0 21 * * 1-4,0": "F23.7"
 
 on:
   workflow_call:
