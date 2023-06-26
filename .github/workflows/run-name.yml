@@ -27,5 +27,5 @@ jobs:
         with:
           repository: datdo178/github-actions
           ref: test
-      - run: echo "${{ env["0 21 * * 1-4,0"] }}"
+      - run: echo "${{ github.inputs.edition }}"
       - run: ls
