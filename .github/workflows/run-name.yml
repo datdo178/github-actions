@@ -2,7 +2,7 @@ name: Run Name
 run-name: ${{ github.inputs.edition }} - ABC
 
 env:
-  - edition: 'abc'
+  edition: 'abc'
 
 on:
   push:
